@@ -1,0 +1,9 @@
+<div class="col-5 tind-btn-preferences">
+    {% for affinity in affinities %}
+    {% if product.prod_affinitie1 == affinity.af_id %}
+    {{ affinity.af_name }}
+    {% endif %}
+    {% empty %}
+    Otro categoría
+    {% endfor %}
+</div>

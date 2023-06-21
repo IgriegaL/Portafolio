@@ -1,0 +1,51 @@
+version: "3.1"
+
+services:
+
+  db:
+    image: postgres:15.1
+    container_name: tindplace-db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASS=portafolio
+      - POSTGRES_DB=tindplace
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+  
+  django:
+    build: .
+    container_name: django
+    command: sh -c "sleep 8 && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  pgadmin:
+      image: dpage/pgadmin4
+      container_name: tindplace-pga
+      depends_on:
+        - db
+      ports:
+        - "5051:80"
+      environment:
+        PGADMIN_DEFAULT_EMAIL: admin@tindplace.cl
+        PGADMIN_DEFAULT_PASSWORD: portafolio
+      restart: always
+
+  carga_datos_db:
+    image: ${DOCKER_IMAGE:-django}
+    container_name: carga_datos_db
+    command: sh -c "sleep 5 && cd /code && sh entrypoint.sh"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+
+volumes:
+  pg_data:

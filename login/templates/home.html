@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+
+<div class="container" style="
+        margin-top: 40px;
+      ">
+  <div class="row text-center">
+    <div class="col">
+      {% if user is not None %}
+      <h1 class="display-1 ">¡Bienvenido/a! {{ user.user_name1 }}</h1>
+      {% endif %}
+
+      {% if message %}
+      <p class="">{{ message }}</p>
+      {% include 'modalHome.html' %}
+      {% else %}
+
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+{% include 'footer.html' %}
+
+{% include 'cardAndModal.html' %}
+
+<script>
+  $(document).ready(function () {
+    const loadMoreBtn = document.getElementById("load-more-btn");
+    const productsContainer = document.getElementById("products-container");
+    const productCards = productsContainer.getElementsByClassName("col-4");
+
+    let visibleProducts = 3;
+    if (productCards.length > 3) {
+      loadMoreBtn.style.display = "none";
+    }
+
+
+    loadMoreBtn.addEventListener("click", () => {
+      let hiddenProducts = 0;
+      for (let i = visibleProducts; i < visibleProducts + 3 && i < productCards.length; i++) {
+        productCards[i].classList.remove("hidden");
+        hiddenProducts++;
+      }
+      visibleProducts += hiddenProducts;
+
+      if (visibleProducts >= productCards.length) {
+        loadMoreBtn.style.display = "none";
+      }
+    });
+  });
+</script>
+
+{% endblock %}

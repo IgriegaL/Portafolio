@@ -1,0 +1,37 @@
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python/Django files
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.pyw
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Docker files
+*.log
+*.pid
+*.sock
+
+
+# PostgreSQL files
+*.psql
+*.backup
+pg_data/
+
+# Other
+venv/
+node_modules/
+.idea/
+.vscode/
+*.sqlite3
+tindplace/.env
+/profile_photos/*.png
+/profile_photos/*.jpg

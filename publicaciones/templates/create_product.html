@@ -54,17 +54,23 @@
         </div>
       </div>
       <div class="col-6">
-        <div class="form-group mb-2">
-          <label style="font-weight: bold;" for="prod_affinitie1">Afinidad del Producto 1:</label>
-          <input type="number" id="prod_affinitie1" name="prod_affinitie1" class="form-control" required
-            value="{{ form.prod_affinitie1.value|default:'' }}">
+        <div class="form-group">
+          <label for="prod_affinitie1">Interés 1:</label>
+          <select id="prod_affinitie1" name="prod_affinitie1" class="form-control" required>
+            {% for choice in form.prod_affinitie1.field.choices %}
+              <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+            {% endfor %}
+          </select>
           {{ form.prod_affinitie1.errors }}
         </div>
-
-        <div class="form-group mb-2">
-          <label style="font-weight: bold;" for="prod_affinitie2">Afinidad del Producto 2:</label>
-          <input type="number" id="prod_affinitie2" name="prod_affinitie2" class="form-control"
-            value="{{ form.prod_affinitie2.value|default:'' }}">
+        
+        <div class="form-group">
+          <label for="prod_affinitie2">Interés 2:</label>
+          <select id="prod_affinitie2" name="prod_affinitie2" class="form-control" required>
+            {% for choice in form.prod_affinitie2.field.choices %}
+              <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+            {% endfor %}
+          </select>
           {{ form.prod_affinitie2.errors }}
         </div>
 

@@ -260,8 +260,9 @@ def favorites(request):
     user = get_object_or_404(User, user_id=request.session.get("user_id"))
 
     favorites = UserFavoriteProduct.objects.filter(user=user)
+    affinity = Affinity.objects.all()
 
-    context = {"favorites": favorites}
+    context = {"favorites": favorites, "affinities" : affinity}
     return render(request, "favorites.html", context)
 
 

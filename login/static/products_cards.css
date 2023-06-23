@@ -1,0 +1,46 @@
+
+  .like-btn {
+    cursor: pointer;
+  }
+
+  .modal {
+    --bs-modal-width: 80%;
+
+    overflow-y: auto;
+    outline: 0;
+  }
+
+  .modal-content {
+    background-color: transparent;
+    border: none;
+  }
+
+  .tind-modal-r-content {
+    border-radius: 30px;
+  }
+
+  .tind-modal-r-content {
+    border-radius: 30px;
+    overflow: hidden;
+  }
+
+  .tind-modal-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  .tind-modal-price {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+  }
+
+  .tind-modal-body {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+  }
